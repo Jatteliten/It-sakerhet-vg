@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MdFiveAndShaConverterTest {
 
     MdFiveAndShaConverter converter = new MdFiveAndShaConverter();
