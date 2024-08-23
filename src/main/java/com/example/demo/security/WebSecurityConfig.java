@@ -37,9 +37,8 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(HttpMethod.GET, "/", "/js/**", "/css/**", "/images/**", "/login/**", "/logout",
-                                "/md5-and-sha", "/md5-and-sha/result", "/crack-md5-and-sha256",
-                                "/crack-md5-and-sha256/result").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/js/**", "/css/**", "/images/**", "/login/**",
+                                "/logout", "/md5-and-sha/**", "/crack-md5-and-sha256/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
