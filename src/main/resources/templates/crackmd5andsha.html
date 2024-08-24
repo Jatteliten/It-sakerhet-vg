@@ -9,6 +9,11 @@
 
 <body class="container" style="margin-top: 20px">
     <a href="/"><img src="images/key.jpg"alt="Home" class="homepage-link-at-top-of-page"></a>
+    <div class="logout-button-at-bottom-of-page">
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" class="btn-danger"/>
+        </form>
+    </div>
     <h1 style="text-decoration: none; color: #333333">Crack:</h1>
     <form action="/crack-md5-and-sha256/result" method="get">
         <div>
@@ -23,6 +28,7 @@
             <a href="/" class="btn btn-secondary btn-sm" role="button">Go back</a>
         </div>
     </form>
+
 </body>
 
 </html>

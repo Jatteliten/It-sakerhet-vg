@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.http.HttpMethod;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -37,9 +39,10 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(HttpMethod.GET, "/", "/js/**", "/css/**", "/images/**", "/login/**",
-                                "/logout", "/md5-and-sha/**", "/crack-md5-and-sha256/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/js/**", "/css/**", "/images/**", "/login/**"
+                                ).permitAll()
                         .anyRequest().authenticated()
+
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
@@ -49,7 +52,8 @@ public class WebSecurityConfig {
                 .logout((logout) -> {
                     logout.permitAll();
                     logout.logoutSuccessUrl("/login");
-                });
+                })
+                .oauth2Login(withDefaults());
 
         return http.build();
     }

@@ -5,3 +5,9 @@
     top: 0 !important;
     left: 0 !important;
 }
+
+.logout-button-at-bottom-of-page {
+    position: absolute !important;
+    bottom: 50px !important;
+    left: 50px !important;
+}
