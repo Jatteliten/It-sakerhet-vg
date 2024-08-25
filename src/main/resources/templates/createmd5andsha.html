@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Create MD5 and Sha256</title>
 
 </head>
 
 <body class="container" style="margin-top: 20px">
-    <a href="/"><img src="images/key.jpg"alt="Home" class="homepage-link-at-top-of-page"></a>
+    <a href="/"><img src="/images/key.jpg" alt="Home" class="homepage-link-at-top-of-page"></a>
     <div class="logout-button-at-bottom-of-page">
         <form action="#" th:action="@{/logout}" method="post">
             <input type="submit" value="Logout" class="btn-danger"/>
@@ -20,7 +20,9 @@
         <div>
             Input what password you want to hash:
             <br>
-            <input type="text" name="inputText">
+            <label>
+                <input type="text" name="inputText">
+            </label>
             <br>
             <button type="submit" class="btn btn-outline-secondary btn-sm">Hash password</button>
         </div>
