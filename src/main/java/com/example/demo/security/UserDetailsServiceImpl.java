@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        User user = userRepository.getUserByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("Användare hittades inte. ");
@@ -54,7 +54,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = User.builder().enabled(true).password(hash).username(username).roles(roles).build();
         userRepository.save(user);
 
-        User findUser = userRepository.getUserByUsername(username);
+        User findUser = userRepository.findByUsername(username);
         if (findUser != null) {
             return "Konto " + username + " har skapats.";
         } else {
