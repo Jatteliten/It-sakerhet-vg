@@ -17,7 +17,6 @@ public class MdFiveAndShaCrackerController {
 
     @RequestMapping("/crack-md5-and-sha256/result")
     public String crackMdFiveAndShaResult(@RequestParam String inputHash, Model model){
-        System.out.println("hej");
         model.addAttribute("password", cracker.crackPassword(inputHash));
         return "crackmd5andsharesult.html";
     }

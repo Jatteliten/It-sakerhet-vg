@@ -22,11 +22,9 @@ public class MdFiveAndShaCracker {
 
     private String scanFileForMatchingPassword(List<String> pws, String input){
         for(String line: pws){
-            if(line.substring(0, 1).equals(input.substring(0, 1))) {
-                String[] parts = line.split(": ");
-                if (input.equals(parts[1]) || input.equals(parts[2])) {
-                    return parts[0];
-                }
+            String[] parts = line.split(": ");
+            if(input.equals(parts[1]) || input.equals(parts[2])){
+                return parts[0];
             }
         }
         return "No password found";
