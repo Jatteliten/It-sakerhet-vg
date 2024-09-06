@@ -1,31 +1,29 @@
 package com.example.demo.services;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class MdFiveAndShaCracker {
 
     public String crackPassword(String input){
-        List<String> pws = createLibraryList();
-        return scanFileForMatchingPassword(pws, input);
+        return scanFileForMatchingPassword(input);
     }
 
-    private List<String> createLibraryList(){
+    private String scanFileForMatchingPassword(String input){
         try {
-            return Files.readAllLines(Paths.get("src/main/resources/hashes.txt"));
+            BufferedReader bf = new BufferedReader(new FileReader("src/main/resources/hashes.txt"));
+            String line;
+
+            while((line = bf.readLine()) != null){
+                String[] hashes = line.split(": ");
+                if(hashes[1].equals(input) || hashes[2].equals(input)){
+                    bf.close();
+                    return hashes[0];
+                }
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private String scanFileForMatchingPassword(List<String> pws, String input){
-        for(String line: pws){
-            String[] parts = line.split(": ");
-            if(input.equals(parts[1]) || input.equals(parts[2])){
-                return parts[0];
-            }
         }
         return "No password found";
     }
