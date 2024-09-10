@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class MdFiveAndShaCracker {
 
-    public String crackPassword(String input){
+    public String crackPasswordAndReturnResultOrFail(String input){
         String findPassword = scanFileForMatchingPassword(input);
         if(findPassword == null){
             return "Password not found";
