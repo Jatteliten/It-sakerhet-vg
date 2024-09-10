@@ -7,7 +7,11 @@ import java.io.IOException;
 public class MdFiveAndShaCracker {
 
     public String crackPassword(String input){
-        return scanFileForMatchingPassword(input);
+        String findPassword = scanFileForMatchingPassword(input);
+        if(findPassword == null){
+            return "Password not found";
+        }
+        return "Password is: " + findPassword;
     }
 
     private String scanFileForMatchingPassword(String input){
@@ -25,7 +29,7 @@ public class MdFiveAndShaCracker {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "No password found";
+        return null;
     }
 
 }
